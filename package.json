@@ -1,0 +1,15 @@
+{
+  "name": "Plusbeauxjours",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/plusbeauxjours/puber-server.git",
+  "author": "plusbeauxjours <plusbeauxjours@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^10.12.2",
+    "nodemon": "^1.18.5",
+    "ts-node": "^7.0.1",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.1.6"
+  }
+}
