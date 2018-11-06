@@ -1,4 +1,4 @@
-type Verification{
+type Verification {
     id: Int!
     target: String!
     payload: String!

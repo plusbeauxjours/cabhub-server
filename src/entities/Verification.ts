@@ -1,18 +1,19 @@
-import { 
-    BaseEntity, 
-    Column, 
+import {
+    BaseEntity,
+    Column,
+    CreateDateColumn,
     Entity,
     PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn, 
+    UpdateDateColumn
 } from "typeorm";
+import { verificationTarget } from "../types/types";
 
 @Entity()
 class Verification extends BaseEntity {
-    @PrimaryGeneratedColumn()id: number;
+    @PrimaryGeneratedColumn() id: number;
 
-    @Column({ type: "text" })
-    target: string;
+    @Column({ type: "text", enum: ["PHONE", "EMAIL"] })
+    target: verificationTarget;
 
     @Column({ type: "text" })
     payload: string;
@@ -26,5 +27,4 @@ class Verification extends BaseEntity {
     @CreateDateColumn() createdAt: string;
     @UpdateDateColumn() updatedAt: string;
 }
-
 export default Verification;
