@@ -1,18 +1,8 @@
-export const typeDefs = ["type SayByeResponse {\n  text: String!\n  error: Boolean!\n}\n\ntype Query {\n  sayBye(name: String!): SayByeResponse!\n  sayHello: String!\n}\n\ntype User {\n  id: Int!\n  email: String\n  verifiedEmail: Boolean!\n  firstName: String!\n  lastName: String!\n  age: Int\n  password: String\n  phoneNumber: String\n  verifiedPhoneNumber: Boolean!\n  profilePhoto: String\n  createdAt: String!\n  updatedAt: String\n  fullName: String\n  isDriving: Boolean!\n  isRiding: Boolean!\n  isTaken: Boolean!\n  lastLng: Float\n  lastLat: Float\n  lastOrientation: Float\n}\n"];
+export const typeDefs = ["type User {\n  id: Int!\n  email: String\n  verifiedEmail: Boolean!\n  firstName: String!\n  lastName: String!\n  age: Int\n  password: String\n  phoneNumber: String\n  verifiedPhoneNumber: Boolean!\n  profilePhoto: String\n  fullName: String\n  isDriving: Boolean!\n  isRiding: Boolean!\n  isTaken: Boolean!\n  lastLng: Float\n  lastLat: Float\n  lastOrientation: Float\n  createdAt: String!\n  updatedAt: String\n}\n\ntype Query {\n  user: User\n}\n"];
 /* tslint:disable */
 
 export interface Query {
-  sayBye: SayByeResponse;
-  sayHello: string;
-}
-
-export interface SayByeQueryArgs {
-  name: string;
-}
-
-export interface SayByeResponse {
-  text: string;
-  error: boolean;
+  user: User | null;
 }
 
 export interface User {
@@ -26,8 +16,6 @@ export interface User {
   phoneNumber: string | null;
   verifiedPhoneNumber: boolean;
   profilePhoto: string | null;
-  createdAt: string;
-  updatedAt: string | null;
   fullName: string | null;
   isDriving: boolean;
   isRiding: boolean;
@@ -35,4 +23,6 @@ export interface User {
   lastLng: number | null;
   lastLat: number | null;
   lastOrientation: number | null;
+  createdAt: string;
+  updatedAt: string | null;
 }
