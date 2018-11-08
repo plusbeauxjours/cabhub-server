@@ -19,8 +19,8 @@ type User {
     chat: Chat
     message: [Message]
     verifications: [Verification]
-    rideAsDriver: [Ride]
-    rideAsPassenger: [Ride]
+    ridesAsDriver: [Ride]
+    ridesAsPassenger: [Ride]
     createdAt: String!
     updatedAt: String
 }

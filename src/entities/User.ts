@@ -79,10 +79,10 @@ class User extends BaseEntity {
     verification: Verification[];
 
     @OneToMany( type => Ride, ride => ride.driver )
-    rideAsDriver: Ride[];
+    ridesAsDriver: Ride[];
 
     @OneToMany( type => Ride, ride => ride.passenger )
-    rideAsPassenger: Ride[];
+    ridesAsPassenger: Ride[];
     
     @CreateDateColumn() createdAt: string;
     @UpdateDateColumn() updatedAt: string;
