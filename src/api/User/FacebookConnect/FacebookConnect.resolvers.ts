@@ -18,7 +18,7 @@ const resolvers: Resolvers = {
                 return {
                     ok: true,
                     error: null,
-                    token: "Coming soon"
+                    token: "Coming soon, already"
                 }    
             }  
         } catch (error) {
@@ -30,13 +30,13 @@ const resolvers: Resolvers = {
         }
         try {
             await User.create({
-                ...args,
-                profilePhoto: `https://avatars3.githubusercontent.com/u/12480618?s=400&u=14fb78618f64f0335191ecc8614ddfc2b52a9233&v=4`
+              ...args,
+              profilePhoto: `http://graph.facebook.com/${fbId}/picture?type=square`
             }).save();
             return {
                 ok: true,
                 error: null,
-                token: "Coming soon"
+                token: "Coming soon, created"
             }
         } catch (error) {
             return {
