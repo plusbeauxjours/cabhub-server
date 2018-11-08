@@ -5,7 +5,7 @@ export type Resolver = (
     info: any
 ) => any;
 
-export interface Reseolvers {
+export interface Resolvers {
     [key: string]: {
         [key: string]: Resolver;
     };
