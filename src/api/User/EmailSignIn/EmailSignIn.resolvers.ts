@@ -1,5 +1,8 @@
 import { Resolvers } from '../../../types/resolvers';
-import { EmailSignInMutationArgs, EmailSignInResponse } from '../../../types/graph';
+import { 
+    EmailSignInMutationArgs, 
+    EmailSignInResponse 
+} from '../../../types/graph';
 import User from '../../../entities/User';
 
 const resolvers: Resolvers = {
@@ -8,7 +11,7 @@ const resolvers: Resolvers = {
             _,
             args: EmailSignInMutationArgs
         ): Promise<EmailSignInResponse> => {
-            const { email } = args;
+            const { email, password } = args;
             try {
                 const user = await User.findOne({ email });
                 if (!user) {
@@ -17,6 +20,20 @@ const resolvers: Resolvers = {
                         error: "No User found with that email",
                         token: null
                     }
+                }
+                const checkPassword = await user.comparePassword(password);
+                if (checkPassword) {
+                    return {
+                        ok: true,
+                        error: null,
+                        token: "Coming soon"
+                    };
+                } else {
+                    return {
+                        ok: false,
+                        error: "Wrong password",
+                        token: null
+                    };
                 }
             } catch(error) {
                 return {
