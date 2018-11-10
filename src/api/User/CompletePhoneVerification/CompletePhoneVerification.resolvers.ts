@@ -5,6 +5,7 @@ import {
 } from '../../../types/graph';
 import User from '../../../entities/User';
 import Verification from '../../../entities/Verification';
+import createJWT from '../../../utils/createJWT';
 
 const resolvers: Resolvers = {
     Mutation: {
@@ -40,10 +41,11 @@ const resolvers: Resolvers = {
                 if(user) {
                     user.verifiedPhonenNumber = true;
                     user.save()
+                    const token = createJWT(user.id)
                     return {
                         ok: true,
                         error: null,
-                        token: "Coming soon"
+                        token
                     }
                 } else {
                     return {
