@@ -1,18 +1,18 @@
 import bcrypt from "bcrypt";
 import { IsEmail } from "class-validator";
-import { 
-    BaseEntity, 
+import {
+    BaseEntity,
     BeforeInsert,
     BeforeUpdate,
-    Column, 
-    CreateDateColumn, 
-    Entity, 
-    ManyToOne, 
+    Column,
+    CreateDateColumn,
+    Entity,
+    ManyToOne,
     OneToMany,
-    PrimaryGeneratedColumn, 
-    UpdateDateColumn, 
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
 } from "typeorm";
-import Chat from './Chat';
+import Chat from "./Chat";
 import Message from "./Message";
 import Ride from "./Ride";
 
@@ -49,45 +49,46 @@ class User extends BaseEntity {
 
     @Column({ type: "text" })
     profilePhoto: string;
-    
+
     @Column({ type: "boolean", default: false })
     isDriving: boolean;
-    
+
     @Column({ type: "boolean", default: false })
     isRiding: boolean;
-    
+
     @Column({ type: "boolean", default: false })
     isTaken: boolean;
 
-    @Column({ type: "double precision", default: 0})
+    @Column({ type: "double precision", default: 0 })
     lastLng: number;
 
-    @Column({ type: "double precision", default: 0})
+    @Column({ type: "double precision", default: 0 })
     lastLat: number;
-    
-    @Column({ type: "double precision", default: 0})
+
+    @Column({ type: "double precision", default: 0 })
     lastOrientation: number;
 
     @Column({ type: "text", nullable: true })
     fbId: string;
 
-    @ManyToOne( type => Chat, chat => chat.participants )
+    @ManyToOne(type => Chat, chat => chat.participants)
     chat: Chat;
-    
-    @OneToMany( type => Message, message => message.user )
+
+    @OneToMany(type => Message, message => message.user)
     messages: Message[];
 
-    @OneToMany( type => Ride, ride => ride.driver )
+    @OneToMany(type => Ride, ride => ride.passenger)
+    ridesAsPassenger: Ride[];
+
+    @OneToMany(type => Ride, ride => ride.driver)
     ridesAsDriver: Ride[];
 
-    @OneToMany( type => Ride, ride => ride.passenger )
-    ridesAsPassenger: Ride[];
-    
     @CreateDateColumn() createdAt: string;
+
     @UpdateDateColumn() updatedAt: string;
-    
+
     get fullName(): string {
-        return `${this.firstName} ${this.lastName}`
+        return `${this.firstName} ${this.lastName}`;
     }
 
     public comparePassword(password: string): Promise<boolean> {
@@ -97,14 +98,14 @@ class User extends BaseEntity {
     @BeforeInsert()
     @BeforeUpdate()
     async savePassword(): Promise<void> {
-        if(this.password) {
+        if (this.password) {
             const hashedPassword = await this.hashPassword(this.password);
             this.password = hashedPassword;
         }
     }
 
     private hashPassword(password: string): Promise<string> {
-        return bcrypt.hash(password, BCRYPT_ROUNDS); 
+        return bcrypt.hash(password, BCRYPT_ROUNDS);
     }
 }
 

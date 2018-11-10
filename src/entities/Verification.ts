@@ -9,8 +9,8 @@ import {
 } from "typeorm";
 import { verificationTarget } from "../types/types";
 
-const PHONE = "PHONE"
-const EMAIL = "EMAIL"
+const PHONE = "PHONE";
+const EMAIL = "EMAIL";
 
 @Entity()
 class Verification extends BaseEntity {
@@ -26,14 +26,17 @@ class Verification extends BaseEntity {
     key: string;
 
     @CreateDateColumn() createdAt: string;
+
     @UpdateDateColumn() updatedAt: string;
 
     @BeforeInsert()
-    crateKey(){
-        if(this.target === PHONE){
+    createKey(): void {
+        if (this.target === PHONE) {
             this.key = Math.floor(Math.random() * 100000).toString();
-        } else {
-            this.key = Math.random().toString(36).substr(2);
+        } else if (this.target === EMAIL) {
+            this.key = Math.random()
+                .toString(36)
+                .substr(2);
         }
     }
 }
