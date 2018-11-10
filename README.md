@@ -9,13 +9,16 @@ Public Resolvers:
 - [x] Sign In / Sign Up with Facebook
 - [x] Sign In with Email
 - [x] Start Phone Number Verification
-- [ ] Complete Phone Number Verification
+- [x] Complete Phone Number Verification
 - [ ] Sign Up with Email
 
-Private Resolvers:
+Authentication:
 
 - [ ] Generate JWT
 - [ ] Verifiy JWT
+
+Private Resolvers:
+
 - [ ] Verify Email
 - [ ] Get my Profile
 - [ ] Update my Profile
