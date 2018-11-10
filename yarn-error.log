@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/8.9.1/bin/node /usr/local/bin/yarn add @type/twilio --dev
+  /usr/local/Cellar/node/8.9.1/bin/node /usr/local/bin/yarn add @tyeps/jsonwebtoken --dev
 
 PATH: 
   /usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@type%2ftwilio: Not found
+  Error: https://registry.yarnpkg.com/@tyeps%2fjsonwebtoken: Not found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:64202:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:137468:22)
       at Request.emit (events.js:182:13)
@@ -40,6 +40,7 @@ npm manifest:
       "@types/helmet": "^0.0.42",
       "@types/morgan": "^1.7.35",
       "@types/node": "^10.12.2",
+      "@types/twilio": "^0.0.10",
       "babel-runtime": "^6.26.0",
       "gql-merge": "^0.0.6",
       "graphql-to-typescript": "^0.1.2",
@@ -62,10 +63,11 @@ npm manifest:
       "graphql-tools": "4.0.3",
       "graphql-yoga": "^1.16.7",
       "helmet": "^3.14.0",
+      "jsonwebtoken": "^8.3.0",
       "merge-graphql-schemas": "^1.5.7",
       "morgan": "^1.9.1",
       "pg": "^7.6.0",
-      "twilio": "^3.23.2",
+      "twilio": "3.23.1",
       "typeorm": "^0.2.8"
     }
   }
@@ -159,6 +161,10 @@ Lockfile:
     version "10.12.2"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.2.tgz#d77f9faa027cadad9c912cd47f4f8b07b0fb0864"
   
+  "@types/q@^0":
+    version "0.0.37"
+    resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.37.tgz#7d6a934b35ee2f0ed0646d286eba559599021c9e"
+  
   "@types/range-parser@*":
     version "1.2.2"
     resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.2.tgz#fa8e1ad1d474688a757140c91de6dace6f4abc8d"
@@ -169,6 +175,14 @@ Lockfile:
     dependencies:
       "@types/express-serve-static-core" "*"
       "@types/mime" "*"
+  
+  "@types/twilio@^0.0.10":
+    version "0.0.10"
+    resolved "https://registry.yarnpkg.com/@types/twilio/-/twilio-0.0.10.tgz#2ed27023ff7463642f90aa7ff103945581bc8e4b"
+    dependencies:
+      "@types/express" "*"
+      "@types/node" "*"
+      "@types/q" "^0"
   
   "@types/zen-observable@^0.5.3":
     version "0.5.4"
@@ -1857,7 +1871,7 @@ Lockfile:
     version "5.0.1"
     resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   
-  jsonwebtoken@^8.1.0:
+  jsonwebtoken@^8.1.0, jsonwebtoken@^8.3.0:
     version "8.3.0"
     resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.3.0.tgz#056c90eee9a65ed6e6c72ddb0a1d325109aaf643"
     dependencies:
@@ -3125,9 +3139,9 @@ Lockfile:
     version "0.14.5"
     resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   
-  twilio@^3.23.2:
-    version "3.23.2"
-    resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.23.2.tgz#60eea1e85e29680e0e05af6c0c4d0631bba4c775"
+  twilio@3.23.1:
+    version "3.23.1"
+    resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.23.1.tgz#a5d6847e084776d060de375b08c07d859da4e5b1"
     dependencies:
       "@types/express" "^4.11.1"
       deprecate "1.0.0"

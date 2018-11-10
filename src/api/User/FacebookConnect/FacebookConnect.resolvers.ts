@@ -29,7 +29,7 @@ const resolvers: Resolvers = {
             };
         }
         try {
-            await User.create({
+            const newUser = await User.create({
               ...args,
               profilePhoto: `http://graph.facebook.com/${fbId}/picture?type=square`
             }).save();
