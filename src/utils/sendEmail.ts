@@ -17,6 +17,6 @@ const sendEmail = (subject: string, html: string) => {
 
 export const sendVerificationEmail = (fullName: string, key: string) => {
     const emailSubject = `Hello! ${fullName}, please verify your email`;
-    const emailBody = `Verify your email by clicking <a href="http://puber.com/verification/${key}/">${key}here</a>`;
+    const emailBody = `Verify your email by clicking <a href="http://puber.com/verification/${key}/">${key}<p>here</p></a>`;
     return sendEmail(emailSubject, emailBody)
 }

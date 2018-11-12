@@ -20,7 +20,8 @@ Authentication:
 Private Resolvers:
 
 - [x] Get my Profile
-- [ ] Verify Email
+- [ ] Requset Email Verification
+- [ ] Complete Email Verification
 - [ ] Update my Profile
 - [ ] Toggle Driving Mode
 - [ ] Report Location / Orientation
