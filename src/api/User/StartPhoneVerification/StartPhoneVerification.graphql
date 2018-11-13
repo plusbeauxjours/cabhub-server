@@ -1,5 +1,5 @@
 type StartPhoneVerificationResponse {
-    ok: Boolean
+    ok: Boolean!
     error: String
 }
 
