@@ -13,6 +13,7 @@ type User {
     isDriving: Boolean!
     isRiding: Boolean!
     isTaken: Boolean!
+    places: [Place]
     lastLng: Float
     lastLat: Float
     lastOrientation: Float

@@ -1,11 +1,11 @@
 import { Resolvers } from '../../../types/resolvers';
-import privateResolver from 'src/utils/privateResolvers';
+import privateResolver from '../../../utils/privateResolvers';
 import { 
     ReportMovementResponse, 
     ReportMovementMutationArgs 
 } from '../../../types/graph';
-import User from 'src/entities/User';
-import cleanNullArgs from 'src/utils/cleanNullArgs';
+import User from '../../../entities/User';
+import cleanNullArgs from '../../../utils/cleanNullArgs';
 
 const resolvers: Resolvers = {
     Mutation: {
