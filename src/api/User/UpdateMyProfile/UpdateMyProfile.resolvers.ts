@@ -1,10 +1,11 @@
-import { Resolvers } from "../../../types/resolvers";
-import privateResolver from "../../../utils/privateResolvers";
+import User from "../../../entities/User";
 import { 
     UpdateMyProfileMutationArgs, 
     UpdateMyProfileResponse 
 } from '../../../types/graph';
-import User from "../../../entities/User";
+import { Resolvers } from "../../../types/resolvers";
+import cleanNullArgs from "../../../utils/cleanNullArgs";
+import privateResolver from "../../../utils/privateResolvers";
 
 const resolvers: Resolvers = {
     Mutation: {
@@ -15,12 +16,7 @@ const resolvers: Resolvers = {
                 { req }
             ): Promise<UpdateMyProfileResponse> => {
                 const user: User = req.user;
-                const notNull = {};
-                Object.keys(args).forEach(key => {
-                    if (args[key] !== null) {
-                        notNull[key] = args[key];
-                    }    
-                });
+                const notNull = cleanNullArgs(args);
                 try {
                     if (args.password !== null) {
                         user.password = args.password;
