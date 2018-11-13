@@ -17,14 +17,14 @@ const resolvers: Resolvers = {
             ): Promise<CompleteEmailVerificationResponse> => {
                 const user: User = req.user
                 const { key } = args
-                if (user.email) {
+                if (user.email && !user.verifiedEmail) {
                     try {
                         const verification = await Verification.findOne({
                             payload: user.email,
                             key
                         });
                         if (verification) {
-                            user.verifiedEmail = true,
+                            user.verifiedEmail = true;
                             user.save();
                             return {
                                 ok: true,
