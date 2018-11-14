@@ -39,7 +39,7 @@ const resolvers: Resolvers = {
             try {
                 const user = await User.findOne({ phoneNumber });
                 if(user) {
-                    user.verifiedPhonenNumber = true;
+                    user.verifiedPhoneNumber = true;
                     user.save()
                     const token = createJWT(user.id)
                     return {
