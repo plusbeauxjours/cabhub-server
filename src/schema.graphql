@@ -46,6 +46,17 @@ type EditPlaceResponse {
   error: String
 }
 
+type GetMyPlacesResponse {
+  ok: Boolean!
+  error: String
+  places: [Place]
+}
+
+type Query {
+  GetMyPlaces: GetMyPlacesResponse!
+  GetMyProfile: GetMyProfileResponse!
+}
+
 type Place {
   id: Int!
   name: String!
@@ -112,10 +123,6 @@ type GetMyProfileResponse {
   user: User
 }
 
-type Query {
-  GetMyProfile: GetMyProfileResponse!
-}
-
 type ReportMovementResponse {
   ok: Boolean!
   error: String
@@ -141,15 +148,15 @@ type User {
   isDriving: Boolean!
   isRiding: Boolean!
   isTaken: Boolean!
-  places: [Place]
   lastLng: Float
   lastLat: Float
   lastOrientation: Float
   fbId: String
   chat: Chat
-  message: [Message]
-  ridesAsDriver: [Ride]
+  messages: [Message]
   ridesAsPassenger: [Ride]
+  ridesAsDriver: [Ride]
+  places: [Place]
   createdAt: String!
   updatedAt: String
 }

@@ -1,5 +1,5 @@
 import { Resolvers } from "../../../types/resolvers";
-import privateResolver from "../../../utils/privateResolvers";
+import privateResolver from "../../../utils/privateResolver";
 import { EditPlaceMutationArgs, EditPlaceResponse } from '../../../types/graph';
 import User from '../../../entities/User';
 import Place from "../../../entities/Place";

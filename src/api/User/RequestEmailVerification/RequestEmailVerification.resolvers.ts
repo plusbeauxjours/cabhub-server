@@ -1,7 +1,7 @@
 import { Resolvers } from "../../../types/resolvers";
 import { RequestEmailVerificationResponse } from '../../../types/graph';
 import { sendVerificationEmail } from '../../../utils/sendEmail';
-import privateResolver from "../../../utils/privateResolvers";
+import privateResolver from "../../../utils/privateResolver";
 import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
 
