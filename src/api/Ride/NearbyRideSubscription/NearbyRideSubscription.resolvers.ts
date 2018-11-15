@@ -1,4 +1,4 @@
-import { withFilter } from 'graphql-yoga';
+import { withFilter } from "graphql-yoga";
 import User from "../../../entities/User";
 
 const resolvers = {
