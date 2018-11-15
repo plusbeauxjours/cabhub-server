@@ -82,10 +82,10 @@ class User extends BaseEntity {
     messages: Message[];
 
     @OneToMany(type => Ride, ride => ride.passenger)
-    ridesAsPassenger: Ride[];
+    rideAsPassenger: Ride[];
 
     @OneToMany(type => Ride, ride => ride.driver)
-    ridesAsDriver: Ride[];
+    rideAsDriver: Ride[];
 
     @CreateDateColumn() createdAt: string;
 

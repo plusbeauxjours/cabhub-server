@@ -1,4 +1,4 @@
-import { rideStatus } from '../types/types';
+import { ridetatus } from '../types/types';
 import { 
     BaseEntity, 
     Column, 
@@ -18,7 +18,7 @@ class Ride extends BaseEntity {
         type: "text", enum: ["ACCTED", "FINISHED", "CANCELED", "REQUESTING", "ONROUTE"],
         default : "ACCEPTED"
     })
-    status: rideStatus;
+    status: ridetatus;
 
     @Column({ type: "text" })
     pickUpAddress: string;
@@ -47,10 +47,10 @@ class Ride extends BaseEntity {
     @Column({ type: "text"})
     duration: string;
 
-    @ManyToOne( type => User, user => user.ridesAsDriver, { nullable: true } )
+    @ManyToOne( type => User, user => user.rideAsDriver, { nullable: true } )
     driver: User;
 
-    @ManyToOne( type => User, user => user.ridesAsPassenger )
+    @ManyToOne( type => User, user => user.rideAsPassenger )
     passenger: User;
 
     @CreateDateColumn() createdAt: string;
