@@ -19,8 +19,8 @@ const resolvers: Resolvers = {
                 const notNull = cleanNullArgs(args)
                 try {
                     await User.update({ id: user.id }, { ...notNull });
-                    const updateUser = await User.findOne({ id: user.id });
-                    pubSub.publish("driverUpdate", { DriverSubscription: updateUser });
+                    const updatedUser = await User.findOne({ id: user.id });
+                    pubSub.publish("driverUpdate", { DriverSubscription: updatedUser });
                     return {
                         ok: true,
                         error: null
