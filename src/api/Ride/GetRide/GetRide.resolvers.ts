@@ -1,8 +1,8 @@
-import { Resolvers } from "src/types/resolvers";
-import privateResolver from "src/utils/privateResolver";
+import { Resolvers } from "../../../types/resolvers";
+import privateResolver from "../../../utils/privateResolver";
 import { GetRideQueryArgs, GetRideResponse } from '../../../types/graph';
-import User from "src/entities/User";
-import Ride from 'src/entities/Ride';
+import User from "../../../entities/User";
+import Ride from '../../../entities/Ride';
 
 const resolvers: Resolvers = {
     Query: {
@@ -17,6 +17,8 @@ const resolvers: Resolvers = {
                     const ride = await Ride.findOne({
                         id: args.rideId
                     })
+                    user.isRiding = false
+                    user.save()
                     if (ride) {
                         if (ride.passengerId === user.id || ride.driverId === user.id) {
                             return {
