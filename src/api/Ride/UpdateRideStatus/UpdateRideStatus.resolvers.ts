@@ -6,7 +6,7 @@ import {
 } from '../../../types/graph';
 import User from "../../../entities/User";
 import Ride from "../../../entities/Ride";
-import Chat from "src/entities/Chat";
+import Chat from "../../../entities/Chat";
 
 const resolvers: Resolvers = {
     Mutation: {
