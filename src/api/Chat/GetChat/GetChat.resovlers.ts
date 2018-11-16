@@ -1,8 +1,9 @@
-import { Resolvers } from "src/types/resolvers";
-import privateResolver from "src/utils/privateResolver";
+import { Resolvers } from "../../../types/resolvers";
+import privateResolver from "../../../utils/privateResolver";
 import { GetChatResponse, GetChatQueryArgs } from '../../../types/graph';
-import User from 'src/entities/User';
-import Chat from 'src/entities/Chat';
+import User from '../../../entities/User';
+import Chat from '../../../entities/Chat';
+import Ride from "../../../entities/Ride";
 
 const resolvers: Resolvers = {
     Query: {
@@ -13,6 +14,7 @@ const resolvers: Resolvers = {
                 { req }
             ): Promise<GetChatResponse> => {
                 const user: User = req.user
+                await Ride.delete({})
                 try {
                     const chat = await Chat.findOne({
                         id: args.chatId
