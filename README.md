@@ -40,7 +40,7 @@ Private Resolvers:
 - [x] Create a Chat Room
 - [x] Get Chat Room Messages
 - [x] Send a Chat Message
-- [ ] Subscribe to Chat Room Messages
+- [x] Subscribe to Chat Room Messages
 
 Code Challenge
 
