@@ -36,6 +36,7 @@ Private Resolvers:
 - [x] Subscribe to Nearby Ride Requests
 - [x] Update Ride Status
 - [x] Get Ride
+- [ ] Create a Chat Room
 - [ ] Subscribe to Ride Status
 - [ ] Get Chat Room Messages
 - [ ] Subscribe to Chat Room Messages
