@@ -16,9 +16,12 @@ const resolvers: Resolvers = {
                 const user: User = req.user
                 await Ride.delete({})
                 try {
-                    const chat = await Chat.findOne({
-                        id: args.chatId
-                    })
+                    const chat = await Chat.findOne(
+                        {
+                            id: args.chatId
+                        },
+                        { relations: ["messages"] }
+                    );
                     if (chat) {
                         if (chat.passengerId === user.id || chat.driverId === user.id) {
                             return {
