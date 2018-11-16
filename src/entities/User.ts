@@ -59,9 +59,6 @@ class User extends BaseEntity {
     @Column({ type: "boolean", default: false })
     isTaken: boolean;
 
-    @OneToMany(type => Place, place => place.user)
-    places: Place[];
-
     @Column({ type: "double precision", default: 0 })
     lastLng: number;
 
@@ -84,10 +81,13 @@ class User extends BaseEntity {
     messages: Message[];
 
     @OneToMany(type => Ride, ride => ride.passenger)
-    rideAsPassenger: Ride[];
+    ridesAsPassenger: Ride[];
 
     @OneToMany(type => Ride, ride => ride.driver)
-    rideAsDriver: Ride[];
+    ridesAsDriver: Ride[];
+
+    @OneToMany(type => Place, place => place.user)
+    places: Place[];
 
     @CreateDateColumn() createdAt: string;
 

@@ -18,8 +18,8 @@ type User {
     lastOrientation: Float
     fbId: String
     messages: [Message]
-    rideAsPassenger: [Ride]
-    rideAsDriver: [Ride]
+    ridesAsPassenger: [Ride]
+    ridesAsDriver: [Ride]
     chatsAsDriver: [Chat]
     chatsAsPassenger: [Chat]
     places: [Place]

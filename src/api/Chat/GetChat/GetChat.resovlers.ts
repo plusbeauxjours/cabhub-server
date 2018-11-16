@@ -1,20 +1,14 @@
+import Chat from "../../../entities/Chat";
+import User from "../../../entities/User";
+import { GetChatQueryArgs, GetChatResponse } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
-import { GetChatResponse, GetChatQueryArgs } from '../../../types/graph';
-import User from '../../../entities/User';
-import Chat from '../../../entities/Chat';
-import Ride from "../../../entities/Ride";
 
 const resolvers: Resolvers = {
     Query: {
         GetChat: privateResolver(
-            async(
-                _,
-                args: GetChatQueryArgs,
-                { req }
-            ): Promise<GetChatResponse> => {
-                const user: User = req.user
-                await Ride.delete({})
+            async (_, args: GetChatQueryArgs, { req }): Promise<GetChatResponse> => {
+                const user: User = req.user;
                 try {
                     const chat = await Chat.findOne(
                         {
@@ -32,7 +26,7 @@ const resolvers: Resolvers = {
                         } else {
                             return {
                                 ok: false,
-                                error: "No Authorized to see this chat",
+                                error: "Not authorized to see this chat.",
                                 chat: null
                             }
                         }
