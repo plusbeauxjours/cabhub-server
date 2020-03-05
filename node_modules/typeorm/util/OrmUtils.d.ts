@@ -36,5 +36,5 @@ export declare class OrmUtils {
      * Compares two arrays.
      */
     static isArraysEqual(arr1: any[], arr2: any[]): boolean;
-    private static compare2Objects(leftChain, rightChain, x, y);
+    private static compare2Objects;
 }

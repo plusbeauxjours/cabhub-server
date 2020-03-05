@@ -41,8 +41,3 @@ Private Resolvers:
 - [x] Get Chat Room Messages
 - [x] Send a Chat Message
 - [x] Subscribe to Chat Room Messages
-
-Code Challenge
-
-- [ ] Get Ride History
-- [ ] See Ride Detail
