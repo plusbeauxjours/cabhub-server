@@ -27,7 +27,7 @@ type SendChatMessageResponse {
 }
 
 type Mutation {
-  SendChatMessage(chatId: Int!, text: String!): SendChatMessageResponse!
+  SendChatMessage(text: String!, chatId: Int!): SendChatMessageResponse!
   AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isFav: Boolean!): AddPlaceResponse!
   DeletePlace(placeId: Int!): DeletePlaceResponse!
   EditPlace(placeId: Int!, name: String, isFav: Boolean): EditPlaceResponse!
@@ -132,12 +132,12 @@ type Ride {
   price: Float!
   distance: String!
   duration: String!
-  driverId: Int!
-  driver: User!
-  passengerId: Int!
-  passenger: User!
-  chatId: Int
+  driverId: Int
+  driver: User
+  passengerId: Int
+  passenger: User
   chat: Chat
+  chatId: Int
   createdAt: String!
   updatedAt: String
 }
@@ -145,6 +145,7 @@ type Ride {
 type UpdateRideStatusResponse {
   ok: Boolean!
   error: String
+  rideId: Int!
 }
 
 enum StatusOptions {

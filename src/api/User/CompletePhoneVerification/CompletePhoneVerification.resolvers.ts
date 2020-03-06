@@ -49,10 +49,18 @@ const resolvers: Resolvers = {
             token
           };
         } else {
+          const newUser = await User.create({
+            firstName: "phone",
+            lastName: phoneNumber,
+            profilePhoto: "",
+            phoneNumber,
+            verifiedPhoneNumber: true
+          }).save();
+          const token = createJWT(newUser.id);
           return {
             ok: true,
             error: null,
-            token: null
+            token
           };
         }
       } catch (error) {
