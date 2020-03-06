@@ -43,13 +43,18 @@ const resolvers: Resolvers = {
                 ride.save();
               }
             } else {
-              ride = await getRepository(Ride).findOne({
-                id: args.rideId,
-                driver: user
-              });
+              ride = await getRepository(Ride).findOne(
+                {
+                  id: args.rideId,
+                  driver: user
+                },
+                { relations: ["passenger"] }
+              );
             }
             if (ride) {
               ride.status = args.status;
+              ride.passenger.isRiding = false;
+              ride.passenger.save();
               ride.save();
               pubSub.publish("rideUpdate", { RideStatusSubscription: ride });
               return {
@@ -74,13 +79,14 @@ const resolvers: Resolvers = {
         } else if (user.isRiding) {
           try {
             if (args.status === "CANCELED") {
-              const ride = await getRepository(Ride).findOne(
-                {
-                  passengerId: user.id,
-                  status: "REQUESTING"
-                },
-                { relations: ["passenger"] }
-              );
+              const ride = await getRepository(Ride).findOne({ id: 28 });
+              // const ride = await getRepository(Ride).findOne(
+              //   {
+              //     passengerId: user.id,
+              //     status: "REQUESTING"
+              //   },
+              //   { relations: ["passenger"] }
+              // );
               if (ride) {
                 ride.remove();
                 user.isRiding = false;
