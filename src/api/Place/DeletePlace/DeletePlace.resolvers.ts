@@ -16,7 +16,6 @@ const resolvers: Resolvers = {
         { req }
       ): Promise<DeletePlaceResponse> => {
         const user: User = req.user;
-        console.log(user);
         try {
           const place = await Place.findOne({ id: args.placeId });
           if (place) {

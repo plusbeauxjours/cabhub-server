@@ -5,7 +5,6 @@ const resolvers: Resolvers = {
   Query: {
     GetMyProfile: privateResolver(async (_, __, { req }) => {
       const { user } = req;
-      console.log(user);
       return {
         ok: true,
         error: null,

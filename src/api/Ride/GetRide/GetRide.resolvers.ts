@@ -3,6 +3,7 @@ import privateResolver from "../../../utils/privateResolver";
 import { GetRideQueryArgs, GetRideResponse } from "../../../types/graph";
 import User from "../../../entities/User";
 import Ride from "../../../entities/Ride";
+import { getRepository } from "typeorm";
 
 const resolvers: Resolvers = {
   Query: {
@@ -10,9 +11,12 @@ const resolvers: Resolvers = {
       async (_, args: GetRideQueryArgs, { req }): Promise<GetRideResponse> => {
         const user: User = req.user;
         try {
-          const ride = await Ride.findOne({
-            id: args.rideId
-          });
+          const ride = await getRepository(Ride).findOne(
+            {
+              id: args.rideId
+            },
+            { relations: ["passenger", "driver"] }
+          );
           if (ride) {
             if (ride.passengerId === user.id || ride.driverId === user.id) {
               return {

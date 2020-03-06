@@ -16,7 +16,6 @@ const resolvers: Resolvers = {
         { req, pubSub }
       ): Promise<RequestRideResponse> => {
         const user: User = req.user;
-        console.log(user);
         if (!user.isRiding && !user.isDriving) {
           try {
             const ride = await Ride.create({
@@ -24,7 +23,9 @@ const resolvers: Resolvers = {
               passenger: user,
               passengerId: user.id
             }).save();
-            pubSub.publish("rideRequest", { NearbyRideSubscription: ride });
+            await pubSub.publish("rideRequest", {
+              NearbyRideSubscription: ride
+            });
             user.isRiding = true;
             user.save();
             return {

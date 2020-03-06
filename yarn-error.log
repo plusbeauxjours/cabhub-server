@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/Cellar/node/12.9.0/bin/node /usr/local/bin/yarn add babel-runtime --dev
+  /usr/local/Cellar/node/12.9.0/bin/node /usr/local/bin/yarn global bin
 
 PATH: 
-  /Users/plusbeauxjours/.local/share/virtualenvs/airbnp-wDyokJBB/bin:/usr/local/bin:/usr/local/Cellar/pipenv/2018.11.26_3/libexec/tools:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 
 Yarn version: 
   1.9.4
@@ -14,17 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/event-stream/-/event-stream-3.3.6.tgz: Request failed "404 Not Found"
-      at ResponseError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:218:66)
-      at new ResponseError (/usr/local/lib/node_modules/yarn/lib/cli.js:324:124)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:61013:26)
-      at Request.emit (events.js:209:13)
-      at Request.module.exports.Request.onRequestResponse (/usr/local/lib/node_modules/yarn/lib/cli.js:138345:10)
-      at ClientRequest.emit (events.js:214:15)
-      at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:582:27)
-      at HTTPParser.parserOnHeadersComplete (_http_common.js:115:17)
-      at TLSSocket.socketOnData (_http_client.js:456:22)
-      at TLSSocket.emit (events.js:209:13)
+  Error: EPERM: operation not permitted, open '/Users/plusbeauxjours/Desktop/Nomadcoder/package.json'
 
 npm manifest: 
   {

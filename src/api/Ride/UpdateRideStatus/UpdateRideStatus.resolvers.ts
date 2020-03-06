@@ -7,6 +7,7 @@ import {
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
+import { getRepository } from "typeorm";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -21,7 +22,7 @@ const resolvers: Resolvers = {
           try {
             let ride: Ride | undefined;
             if (args.status === "ACCEPTED") {
-              ride = await Ride.findOne(
+              ride = await getRepository(Ride).findOne(
                 {
                   id: args.rideId,
                   status: "REQUESTING"
@@ -32,15 +33,17 @@ const resolvers: Resolvers = {
                 ride.driver = user;
                 user.isTaken = true;
                 user.save();
+                console.log("ride when get accepted", ride);
                 const chat = await Chat.create({
                   driver: user,
                   passenger: ride.passenger
                 }).save();
+                console.log("chat when get accepted", chat);
                 ride.chat = chat;
                 ride.save();
               }
             } else {
-              ride = await Ride.findOne({
+              ride = await getRepository(Ride).findOne({
                 id: args.rideId,
                 driver: user
               });
@@ -71,13 +74,10 @@ const resolvers: Resolvers = {
         } else if (user.isRiding) {
           try {
             if (args.status === "CANCELED") {
-              // const ride = await Ride.findOne({
-              //   id: 5
-              // });
-              const ride = await Ride.findOne(
+              const ride = await getRepository(Ride).findOne(
                 {
                   passengerId: user.id,
-                  status: "REQUESTING" || "ACCEPTED" || "ONROUTE"
+                  status: "REQUESTING"
                 },
                 { relations: ["passenger"] }
               );
@@ -92,11 +92,30 @@ const resolvers: Resolvers = {
                   rideId: args.rideId
                 };
               } else {
-                return {
-                  ok: false,
-                  error: "Cant cancel ride",
-                  rideId: args.rideId
-                };
+                const ride = await getRepository(Ride).findOne(
+                  {
+                    passengerId: user.id,
+                    status: "ACCEPTED"
+                  },
+                  { relations: ["passenger"] }
+                );
+                if (ride) {
+                  ride.remove();
+                  user.isRiding = false;
+                  user.isTaken = false;
+                  user.save();
+                  return {
+                    ok: true,
+                    error: null,
+                    rideId: args.rideId
+                  };
+                } else {
+                  return {
+                    ok: false,
+                    error: "Cant cancel ride",
+                    rideId: args.rideId
+                  };
+                }
               }
             } else {
               return {

@@ -7,6 +7,7 @@ import {
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
+import { getRepository } from "typeorm";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -18,7 +19,7 @@ const resolvers: Resolvers = {
       ): Promise<SendChatMessageResponse> => {
         const user: User = req.user;
         try {
-          const chat = await Chat.findOne({ id: args.chatId });
+          const chat = await getRepository(Chat).findOne({ id: args.chatId });
           if (chat) {
             if (chat.passengerId === user.id || chat.driverId === user.id) {
               const message = await Message.create({
