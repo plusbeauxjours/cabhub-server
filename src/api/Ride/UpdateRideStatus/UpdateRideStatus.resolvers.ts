@@ -71,16 +71,16 @@ const resolvers: Resolvers = {
         } else if (user.isRiding) {
           try {
             if (args.status === "CANCELED") {
-              const ride = await Ride.findOne({
-                id: 1
-              });
-              // const ride = await Ride.findOne(
-              //   {
-              //     passengerId: user.id,
-              //     status: "REQUESTING"
-              //   },
-              //   { relations: ["passenger"] }
-              // );
+              // const ride = await Ride.findOne({
+              //   id: 5
+              // });
+              const ride = await Ride.findOne(
+                {
+                  passengerId: user.id,
+                  status: "REQUESTING" || "ACCEPTED" || "ONROUTE"
+                },
+                { relations: ["passenger"] }
+              );
               if (ride) {
                 ride.remove();
                 user.isRiding = false;
