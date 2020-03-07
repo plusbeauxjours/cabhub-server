@@ -33,14 +33,16 @@ const resolvers: Resolvers = {
                 ride.driver = user;
                 user.isTaken = true;
                 user.save();
-                console.log("ride when get accepted", ride);
                 const chat = await Chat.create({
                   driver: user,
-                  passenger: ride.passenger
+                  driverId: user.id,
+                  passenger: ride.passenger,
+                  passengerId: ride.passenger.id
                 }).save();
                 console.log("chat when get accepted", chat);
                 ride.chat = chat;
                 ride.save();
+                console.log("ride when get accepted", ride);
               }
             } else {
               ride = await getRepository(Ride).findOne(

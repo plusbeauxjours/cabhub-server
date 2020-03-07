@@ -3,20 +3,21 @@ import User from "../../../entities/User";
 import { GetChatQueryArgs, GetChatResponse } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
-import { getRepository } from "typeorm";
 
 const resolvers: Resolvers = {
   Query: {
     GetChat: privateResolver(
       async (_, args: GetChatQueryArgs, { req }): Promise<GetChatResponse> => {
+        console.log("args.chatId", args.chatId);
         const user: User = req.user;
         try {
-          const chat = await getRepository(Chat).findOne(
+          const chat = await Chat.findOne(
             {
               id: args.chatId
             },
-            { relations: ["messages", "passenger", "ride", "driver"] }
+            { relations: ["messages"] }
           );
+          console.log("chat", chat);
           if (chat) {
             if (chat.passengerId === user.id || chat.driverId === user.id) {
               return {

@@ -48,7 +48,7 @@ type Mutation {
 type Chat {
   id: Int!
   messages: [Message]
-  passengerId: Int!
+  passengerId: Int
   passenger: User!
   driverId: Int
   driver: User!
