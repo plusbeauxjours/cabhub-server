@@ -27,7 +27,7 @@ const resolvers: Resolvers = {
                   id: args.rideId,
                   status: "REQUESTING"
                 },
-                { relations: ["passenger"] }
+                { relations: ["passenger", "driver"] }
               );
               if (ride) {
                 ride.driver = user;
@@ -48,7 +48,7 @@ const resolvers: Resolvers = {
                   id: args.rideId,
                   driver: user
                 },
-                { relations: ["passenger"] }
+                { relations: ["passenger", "driver"] }
               );
             }
             if (ride) {
@@ -85,7 +85,7 @@ const resolvers: Resolvers = {
               //     passengerId: user.id,
               //     status: "REQUESTING"
               //   },
-              //   { relations: ["passenger"] }
+              // { relations: ["passenger", "driver"] }
               // );
               if (ride) {
                 ride.remove();
@@ -103,7 +103,7 @@ const resolvers: Resolvers = {
                     passengerId: user.id,
                     status: "ACCEPTED"
                   },
-                  { relations: ["passenger"] }
+                  { relations: ["passenger", "driver"] }
                 );
                 if (ride) {
                   ride.remove();
