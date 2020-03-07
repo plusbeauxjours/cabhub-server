@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/Cellar/node/12.9.0/bin/node /usr/local/bin/yarn global bin
+  /usr/local/Cellar/node/12.9.0/bin/node /usr/local/bin/yarn add copy --dev
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+  /usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 
 Yarn version: 
   1.9.4
@@ -14,7 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EPERM: operation not permitted, open '/Users/plusbeauxjours/Desktop/Nomadcoder/package.json'
+  Error: https://registry.yarnpkg.com/flatmap-stream/-/flatmap-stream-0.1.1.tgz: Request failed "404 Not Found"
+      at ResponseError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:218:66)
+      at new ResponseError (/usr/local/lib/node_modules/yarn/lib/cli.js:324:124)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:61013:26)
+      at Request.emit (events.js:209:13)
+      at Request.module.exports.Request.onRequestResponse (/usr/local/lib/node_modules/yarn/lib/cli.js:138345:10)
+      at ClientRequest.emit (events.js:214:15)
+      at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:582:27)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:115:17)
+      at TLSSocket.socketOnData (_http_client.js:456:22)
+      at TLSSocket.emit (events.js:209:13)
 
 npm manifest: 
   {
@@ -45,7 +55,10 @@ npm manifest:
       "predev": "yarn run types",
       "dev": "cd src && nodemon --exec ts-node index.ts -e ts,graphql",
       "pretypes": "gql-merge --out-file ./src/schema.graphql ./src/api/**/*.graphql",
-      "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts"
+      "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts",
+      "prebuild": "rm -rf dist",
+      "build": "tsc",
+      "postbuild": "cd src && copy ./api/**/*.graphql ../dist/api"
     },
     "dependencies": {
       "bcrypt": "^3.0.2",
