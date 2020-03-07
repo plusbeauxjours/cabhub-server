@@ -90,7 +90,6 @@ const resolvers: Resolvers = {
               // { relations: ["passenger", "driver"] }
               // );
               if (ride) {
-                ride.remove();
                 user.isRiding = false;
                 user.isTaken = false;
                 user.save();
