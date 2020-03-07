@@ -16,7 +16,6 @@ const resolvers: Resolvers = {
               { id: req.user.id },
               { relations: ["ridesAsDriver"] }
             );
-            console.log(user);
             if (user) {
               return {
                 ok: true,
@@ -38,7 +37,6 @@ const resolvers: Resolvers = {
             };
           }
         } else {
-          console.log(user.id);
           try {
             const user = await getRepository(User).findOne(
               { id: req.user.id },

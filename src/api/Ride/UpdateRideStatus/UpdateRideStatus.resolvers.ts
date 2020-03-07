@@ -39,10 +39,8 @@ const resolvers: Resolvers = {
                   passenger: ride.passenger,
                   passengerId: ride.passenger.id
                 }).save();
-                console.log("chat when get accepted", chat);
                 ride.chat = chat;
                 ride.save();
-                console.log("ride when get accepted", ride);
               }
             } else {
               ride = await getRepository(Ride).findOne(
