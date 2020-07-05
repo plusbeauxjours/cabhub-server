@@ -1,43 +1,13 @@
-puber-server
+# PUBER-SERVER
 
-Server for the (N)Uber Clone Course on Nomad Academy. GraphQL, Typescript, NodeJS
+### Introduction
 
-Resolvers
+> Server for <a href="https://github.com/plusbeauxjours/puber-client">PUBER-WEB</a> 
 
-Public Resolvers:
+### Technical Sheet
 
-- [x] Sign In / Sign Up with Facebook
-- [x] Sign In with Email
-- [x] Start Phone Number Verification
-- [x] Complete Phone Number Verification
-- [x] Sign Up with Email
+> NodeJS, Express, GraphQL, TypeORM, React, Apollo, TypeScript, Styled-Components, GoogleMapAPI, Heroku
 
-Authentication:
+### Portfolio Link
 
-- [x] Generate JWT
-- [x] Verifiy JWT
-
-Private Resolvers:
-
-- [x] Get my Profile
-- [x] Requset Email Verification
-- [x] Complete Email Verification
-- [x] Update my Profile
-- [x] Toggle Driving Mode
-- [x] Report Location / Orientation
-- [x] Add Place
-- [x] Edit Place
-- [x] Delete Place
-- [x] See Nearby Drivers
-- [x] Get My Places
-- [x] Subscribe to Nearby Drivers
-- [x] Request a Ride
-- [x] Get Nearby Ride Requests
-- [x] Subscribe to Nearby Ride Requests
-- [x] Update Ride Status
-- [x] Get Ride
-- [x] Subscribe to Ride Status
-- [x] Create a Chat Room
-- [x] Get Chat Room Messages
-- [x] Send a Chat Message
-- [x] Subscribe to Chat Room Messages
+> https://www.plusbeauxjours.com/projects/web/puber-web
