@@ -10,4 +10,4 @@
 
 ### Portfolio Link
 
-> https://www.plusbeauxjours.com/projects/web/puber-web
+> https://www.plusbeauxjours.info/projects/web/puber
