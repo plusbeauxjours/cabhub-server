@@ -1,8 +1,8 @@
-# PUBER-SERVER
+# CABHUB-SERVER
 
 ### Introduction
 
-> Server for <a href="https://github.com/plusbeauxjours/puber-client">PUBER-WEB</a> 
+> Server for <a href="https://github.com/plusbeauxjours/cabhub-client">CABHUB-WEB</a> 
 
 ### Technical Sheet
 
@@ -10,4 +10,4 @@
 
 ### Portfolio Link
 
-> https://www.plusbeauxjours.info/projects/web/puber
+> https://www.plusbeauxjours.info/projects/0/web/cabhub
